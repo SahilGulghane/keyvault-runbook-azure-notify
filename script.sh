@@ -130,7 +130,7 @@ foreach ($secret in $secrets) {
     $expiringObjects | ConvertTo-Json -Depth 10
 
     # Send the data to the Logic App webhook
-    $webhookUrl = "https://prod-35.eastus.logic.azure.com:443/workflows/faf0551481df47c9bf83d2befdc69c4c/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=m8bHNf5JO1YclA3mzYvINsk7maw8qZ1vdSbzO2cOZsA"
+    $webhookUrl = "-----"
     $expiringObjectsJson = $expiringObjects | ConvertTo-Json -Depth 10
     Invoke-RestMethod -Uri $webhookUrl -Method Post -ContentType "application/json" -Body $expiringObjectsJson
     Write-Output "Notification sent to the client via Logic App."
